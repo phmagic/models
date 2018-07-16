@@ -279,7 +279,7 @@ def create_model_fn(detection_model_fn, configs, hparams, use_tpu=False):
     if mode in (tf.estimator.ModeKeys.TRAIN, tf.estimator.ModeKeys.EVAL):
       losses_dict = detection_model.loss(
           prediction_dict, features[fields.InputDataFields.true_image_shape])
-      losses = [loss_tensor for loss_tensor in losses_dict.itervalues()]
+      losses = [loss_tensor for loss_tensor in losses_dict.values()]
       if train_config.add_regularization_loss:
         regularization_losses = tf.get_collection(
             tf.GraphKeys.REGULARIZATION_LOSSES)
