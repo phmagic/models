@@ -378,7 +378,7 @@ def create_model_fn(detection_model_fn, configs, hparams, use_tpu=False):
         eval_metrics = ['coco_detection_metrics']
       eval_metric_ops = eval_util.get_eval_metric_ops_for_evaluators(
           eval_metrics,
-          category_index.values(),
+          list(category_index.values()),
           eval_dict,
           include_metrics_per_category=eval_config.include_metrics_per_category)
       for loss_key, loss_tensor in iter(losses_dict.items()):
